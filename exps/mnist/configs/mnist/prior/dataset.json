@@ -1,0 +1,7 @@
+{
+    "dataset": "mnist",
+    "split": "test",
+    "squeeze": false,
+    "start_idx": 0,
+    "num_imgs": 100
+}

@@ -1,0 +1,8 @@
+{
+    "rho": 0.05,
+    "maxiter": 80,
+    "subprob_tol": 1e-5,
+    "subprob_maxiter": 30,
+    "scale_f": 1.0,
+    "zero_one": true
+}

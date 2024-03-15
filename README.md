@@ -344,8 +344,8 @@ All checkpoints are provided in this [Google drive](https://drive.google.com/dri
 - [scico](https://github.com/lanl/scico)
 - [Prox-PnP](https://github.com/samuro95/Prox-PnP)
 - [unrolling_meets_data_driven_regularization](https://github.com/Subhadip-1/unrolling_meets_data_driven_regularization)
+- [odl](https://odlgroup.github.io/odl/)
 
-  
 
 ## References
 

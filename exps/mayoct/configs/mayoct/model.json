@@ -1,0 +1,9 @@
+{
+    "model": "lpn_128",
+    "params": {
+        "in_dim": 1,
+        "hidden": 256, 
+        "beta": 100, 
+        "alpha": 1e-6
+    }
+}
