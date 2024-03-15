@@ -41,9 +41,7 @@ Learned prior for hand-written digit images in MNIST.
 The code is implemented with Python 3.9.16 and PyTorch 1.12.0. Install the conda environment by
 
 ```
-
 conda env create -f environment.yml
-
 ```
 
   
@@ -51,9 +49,7 @@ conda env create -f environment.yml
 Install the `lpn` package
 
 ```
-
 pip install -e .
-
 ```
 
   
@@ -69,15 +65,10 @@ The datasets are placed in `data/` folder.
 The dataset is already in `data/mnist` and has the following structure:
 
 ```
-
 data/
-
 └── mnist
-
-├── labels.npy
-
-└── mnist.npy
-
+    ├── labels.npy
+    └── mnist.npy
 ```
 
   
@@ -102,23 +93,14 @@ The resulting directory should have the following structure:
 ```
 
 data/
-
 └── celeba
-
-└── celeba
-
-├── img_align_celeba
-
-├── identity_CelebA.txt
-
-├── list_attr_celeba.txt
-
-├── list_bbox_celeba.txt
-
-├── list_eval_partition.txt
-
-└── list_landmarks_align_celeba.txt
-
+    └── celeba
+        ├── img_align_celeba
+        ├── identity_CelebA.txt
+        ├── list_attr_celeba.txt
+        ├── list_bbox_celeba.txt
+        ├── list_eval_partition.txt
+        └── list_landmarks_align_celeba.txt
 ```
 
   
@@ -134,27 +116,16 @@ The resulting directory should have the following structure:
 ```
 
 data/
-
 └── mayoct
-
-└── mayo_data_arranged_patientwise
-
-├── test
-
-│ ├── FBP
-
-│ ├── Phantom
-
-│ └── Sinogram
-
-└── train
-
-├── FBP
-
-├── Phantom
-
-└── Sinogram
-
+    └── mayo_data_arranged_patientwise
+        ├── test
+        │   ├── FBP
+        │   ├── Phantom
+        │   └── Sinogram
+        └── train
+            ├── FBP
+            ├── Phantom
+            └── Sinogram
 ```
 
   
@@ -189,7 +160,6 @@ For reproducing the Laplacian experiment, use code in `exps/laplacian/`.
 3. Visualize results
 
 - Plot Fig. 1 in the paper: `viz_compact.ipynb`
-
 - Plot Fig. 6 in the supplementary of the paper: `viz_supp.ipynb`
 
   
@@ -209,9 +179,7 @@ Code for reproducing the MNIST experiment is in `exps/mnist/`.
 1. Train:
 
 ```
-
 bash exps/mnist/train_mnist.sh
-
 ```
 
   
@@ -229,9 +197,7 @@ bash exps/mnist/train_mnist.sh
   
 
 ```
-
 bash exps/mnist/prior_mnist.sh
-
 ```
 
   
@@ -272,9 +238,7 @@ Code for reproducing the CelebA experiment is in `exps/celeba/`.
 1. Train:
 
 ```
-
 bash exps/celeba/train.sh
-
 ```
 
 - Two models will be trained with two noise levels (0.05 and 0.1), and saved in `exps/celeba/models/lpn/s={0.05, 0.1}/model.pt`.
@@ -289,9 +253,7 @@ bash exps/celeba/train.sh
 2. Run deblurring:
 
 ```
-
 python exps/celeba/test.py --sigma_blur [BLUR LEVEL] --sigma_noise [NOISE LEVEL]
-
 ```
 
 - E.g., `python test.py --sigma_blur 1.0 --sigma_noise 0.02` will run deblurring using LPN with Gaussian blur kernel standard deviation $\sigma_{blur}=1.0$ and noise standard deviation $\sigma_{noise}=0.02$.
@@ -320,17 +282,12 @@ Code for reproducing the MayoCT experiment is in `exps/mayoct/`.
 1. Train:
 
 ```
-
 bash exps/mayoct/train.sh
-
 ```
 
   
 
 - Model will be saved in `exps/mayoct/experiments/mayoct/`
-
-  
-
 - We also provide the [pretrained model](#pretrained-checkpoints).
 
   
@@ -340,9 +297,7 @@ bash exps/mayoct/train.sh
   
 
 ```
-
 python exps/mayoct/inverse_mayoct_tomo.py
-
 ```
 
   
@@ -356,9 +311,7 @@ python exps/mayoct/inverse_mayoct_tomo.py
   
 
 ```
-
 bash exps/mayoct/test_cs.sh
-
 ```
 
   
@@ -389,9 +342,7 @@ All checkpoints are provided in this [Google drive](https://drive.google.com/dri
 ## Acknowledgements
 
 - [scico](https://github.com/lanl/scico)
-
 - [Prox-PnP](https://github.com/samuro95/Prox-PnP)
-
 - [unrolling_meets_data_driven_regularization](https://github.com/Subhadip-1/unrolling_meets_data_driven_regularization)
 
   
@@ -403,19 +354,11 @@ All checkpoints are provided in this [Google drive](https://drive.google.com/dri
 If you find the code useful, please consider citing
 
 ```bib
-
 @inproceedings{
-
-fang2023whats,
-
-title={What's in a Prior? Learned Proximal Networks for Inverse Problems},
-
-author={Zhenghan Fang and Sam Buchanan and Jeremias Sulam},
-
-booktitle={International Conference on Learning Representations},
-
-year={2024}
-
+    fang2023whats,
+    title={What's in a Prior? Learned Proximal Networks for Inverse Problems},
+    author={Zhenghan Fang and Sam Buchanan and Jeremias Sulam},
+    booktitle={International Conference on Learning Representations},
+    year={2024}
 }
-
 ```
