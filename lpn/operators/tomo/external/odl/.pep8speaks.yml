@@ -1,0 +1,23 @@
+message:  # Customize the comment made by the bot
+    opened:  # Messages when a new PR is submitted
+        header: "Checking new PR..."
+        footer: ""
+    updated:  # Messages when new commits are added to the PR
+        header: "Checking updated PR..."
+        footer: ""
+    no_errors: "No PEP8 issues."
+
+scanner:
+    diff_only: False  # If True, errors caused by only the patch are shown
+
+pycodestyle:
+    show-source: True
+    ignore:  # Errors and warnings to ignore
+        - E402
+        - E741
+        - W503
+        - W504
+
+no_blank_comment: False
+only_mention_files_with_errors: True
+descending_issues_order: True
