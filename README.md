@@ -2,37 +2,36 @@
 
   
 
-This is the official implementation of the paper [What's in a Prior? Learned Proximal Networks for Inverse Problems](https://openreview.net/forum?id=kNPcOaqC5r&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2024%2FConference%2FAuthors%23your-submissions)) @ [ICLR 2024](https://iclr.cc/Conferences/2024)
-
-  
+This is the official implementation of the paper [What's in a Prior? Learned Proximal Networks for Inverse Problems](https://openreview.net/pdf?id=kNPcOaqC5r) @ [ICLR 2024](https://iclr.cc/Conferences/2024)
 
 by [Zhenghan Fang](), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sulam](https://sites.google.com/view/jsulam)
 
-  
 
 --------------------
 
-  
+We propose *learned proximal networks* (LPN), a new class of deep neural networks that *exactly implement the proximal operator* of a general learned function. Such an LPN implicitly learns a regularization function for inverse problems that can be characterized and evaluated, shedding light onto what has been learned from data and improving the interpretability of learning-based solutions. In turn, we present a new training problem, dubbed *proximal matching*, that provably promotes the recovery of the correct regularization term (i.e., the log of the data distribution). Moreover, we show convergence for PnP reconstruction algorithms using LPN with minimal and verifiable assumptions.
 
-We propose *learned proximal networks* (LPN), a new class of deep neural networks that *exactly implement the proximal operator* of a general learned function. Such an LPN implicitly learns a regularization function for inverse problems that can be characterized and evaluated, shedding light onto what has been learned from data and improving the interpretability of learning-based solutions. In turn, we present a new training problem, dubbed *proximal matching*, that provably promotes the recovery of the correct regularization term (i.e., the log of the data distribution).
+- Laplacian example: the proximal operator $f_\theta$ and log-prior $R_\theta$ learned by LPN for the Laplacian distribution, trained via the $\ell_2$, $\ell_1$, or proximal matching ($\mathcal{L}_{PM}$) loss.
 
-Moreover, we show convergence for PnP reconstruction algorithms using LPN with minimal and verifiable assumptions.
+<img src="assets/laplacian_compact.png" height="240px">
+<!-- ![Learning Laplacian](assets/laplacian_compact.png) -->
 
-  
-  
-  
+- Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.02$
 
-![Learning Laplacian](assets/laplacian_compact.png)
+<img src="assets/blur=1.0_noise=0.02.png" height="280px"/>
 
-The proximal operator $f_\theta$ and log-prior $R_\theta$ learned by LPN for the Laplacian distribution using the $\ell_2$, $\ell_1$, or proximal matching ($\mathcal{L}_{PM}$) loss.
+- Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.04$
 
-  
+<img src="assets/blur=1.0_noise=0.04.png" height="280px"/>
 
-![Learned prior for MNIST](assets/mnist_gaussian.png)
+- Sparse-view tomographic reconstruction on MayoCT
 
-Learned prior for hand-written digit images in MNIST.
+<img src="assets/tomo.png" height="150px"/>
 
-  
+- Compressed sensing on MayoCT (compression rate = 1/16)
+
+<img src="assets/cs_measurements_16384.png" height="150px"/>
+
 
 ## Installation
 
