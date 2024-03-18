@@ -13,24 +13,24 @@ We propose *learned proximal networks* (LPN), a new class of deep neural network
 
 - Laplacian example: the proximal operator $f_\theta$ and log-prior $R_\theta$ learned by LPN for the Laplacian distribution, trained via the $\ell_2$, $\ell_1$, or proximal matching ($\mathcal{L}_{PM}$) loss.
 
-<img src="assets/laplacian_compact.png" height="240px">
+<img src="assets/laplacian_compact.png" height="280px">
 <!-- ![Learning Laplacian](assets/laplacian_compact.png) -->
 
 - Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.02$
 
-<img src="assets/blur=1.0_noise=0.02.png" height="280px"/>
+<img src="assets/blur=1.0_noise=0.02.png" height="290px"/>
 
 - Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.04$
 
-<img src="assets/blur=1.0_noise=0.04.png" height="280px"/>
+<img src="assets/blur=1.0_noise=0.04.png" height="290px"/>
 
 - Sparse-view tomographic reconstruction on MayoCT
 
-<img src="assets/tomo.png" height="150px"/>
+<img src="assets/tomo.png" height="180px"/>
 
 - Compressed sensing on MayoCT (compression rate = 1/16)
 
-<img src="assets/cs_measurements_16384.png" height="150px"/>
+<img src="assets/cs_measurements_16384.png" height="180px"/>
 
 
 ## Installation
