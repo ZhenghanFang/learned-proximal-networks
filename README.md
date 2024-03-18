@@ -18,11 +18,11 @@ We propose *learned proximal networks* (LPN), a new class of deep neural network
 
 - Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.02$
 
-<img src="assets/blur=1.0_noise=0.02.png" width="85%"/>
+<img src="assets/blur=1.0_noise=0.02.png" width="90%"/>
 
 - Deblurring on CelebA, $\sigma_{blur}=1.0$, $\sigma_{noise}=0.04$
 
-<img src="assets/blur=1.0_noise=0.04.png" width="85%"/>
+<img src="assets/blur=1.0_noise=0.04.png" width="90%"/>
 
 - Sparse-view tomographic reconstruction on MayoCT
 
