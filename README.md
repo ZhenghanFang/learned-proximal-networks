@@ -1,7 +1,5 @@
 # What's in a Prior? Learned Proximal Networks for Inverse Problems
 
-  
-
 This is the official implementation of the paper [What's in a Prior? Learned Proximal Networks for Inverse Problems](https://openreview.net/pdf?id=kNPcOaqC5r) @ [ICLR 2024](https://iclr.cc/Conferences/2024)
 
 by [Zhenghan Fang](), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sulam](https://sites.google.com/view/jsulam)
