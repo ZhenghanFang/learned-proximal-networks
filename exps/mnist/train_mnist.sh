@@ -10,4 +10,5 @@ python lpn/train.py \
 --lr 1e-4 \
 --num_stages 4 \
 --image_size 28 \
---num_channels 1
+--num_channels 1 \
+--validate_every_n_steps 100

@@ -89,8 +89,8 @@ def parse_args():
     parser.add_argument(
         "--validate_every_n_steps",
         type=int,
-        default=100,
-        help="Validate model every n steps.",
+        default=0,
+        help="Validate model every n steps. Set to 0 to disable validation.",
     )
     parser.add_argument(
         "--num_stages",
@@ -170,9 +170,11 @@ def main(args):
     elif args.optimizer == "sgd":
         optimizer = torch.optim.SGD(model.parameters(), lr=args.lr)
 
+    # tensorboard
+    writer = SummaryWriter(log_dir=f"{args.exp_dir}/tb")
+
     # Get the dataset
     train_dataset = load_dataset(args.dataset_config, "train")
-    valid_dataset = load_dataset(args.dataset_config, "valid")
 
     # Get the dataloader
     train_dataloader = torch.utils.data.DataLoader(
@@ -181,23 +183,23 @@ def main(args):
         shuffle=True,
         num_workers=args.dataloader_num_workers,
     )
-    valid_dataloader = torch.utils.data.DataLoader(
-        valid_dataset,
-        batch_size=1,
-        shuffle=False,
-        num_workers=1,
-    )
 
-    # tensorboard
-    writer = SummaryWriter(log_dir=f"{args.exp_dir}/tb")
+    if args.validate_every_n_steps > 0:
+        valid_dataset = load_dataset(args.dataset_config, "valid")
+        valid_dataloader = torch.utils.data.DataLoader(
+            valid_dataset,
+            batch_size=1,
+            shuffle=False,
+            num_workers=1,
+        )
+        validator = trainer.Validator(valid_dataloader, writer, args.sigma_noise)
 
-    validator = trainer.Validator(valid_dataloader, writer, args.sigma_noise)
     global_step = 0
     progress_bar = tqdm(total=args.num_steps)
     progress_bar.set_description(f"Train")
     while True:
         for step, batch in enumerate(train_dataloader):
-            if global_step % args.validate_every_n_steps == 0:
+            if args.validate_every_n_steps > 0 and global_step % args.validate_every_n_steps == 0:
                 validator.validate(model, global_step)
                 
             model.train()

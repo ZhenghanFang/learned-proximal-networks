@@ -3,8 +3,8 @@
 for NOISE in 0.1; do
     python lpn/train.py \
     --exp_dir exps/mayoct/models/lpn/n=${NOISE} \
-    --dataset_config_path exps/mayoct/configs/dataset.json \
-    --model_config_path exps/mayoct/configs/model.json \
+    --dataset_config_path exps/mayoct/configs/mayoct/dataset.json \
+    --model_config_path exps/mayoct/configs/mayoct/model.json \
     --train_batch_size 64 \
     --dataloader_num_workers 4 \
     --num_steps 40000 \
