@@ -65,7 +65,23 @@ Download files of the CelebA dataset, as defined in the filelist in [torchvision
 
 `img_align_celeba.zip, list_attr_celeba.txt, identity_CelebA.txt, list_bbox_celeba.txt, list_landmarks_align_celeba.txt, list_eval_partition.txt`
 
-directly from the authors' [google drive link](https://drive.google.com/drive/folders/0B7EVK8r0v71pWEZsZE9oNnFzTm8?resourcekey=0-5BR16BdXnb8hVj6CNHKzLg&usp=drive_link), and place them in `data/celeba/celeba`. Unzip `img_align_celeba.zip`. The resulting directory should have the following structure:
+directly from the authors' [google drive link](https://drive.google.com/drive/folders/0B7EVK8r0v71pWEZsZE9oNnFzTm8?resourcekey=0-5BR16BdXnb8hVj6CNHKzLg&usp=drive_link), and place them in `data/celeba/celeba`. Unzip `img_align_celeba.zip`. You may use the following commands to download the files automatically:
+
+```
+pip install gdown
+mkdir data/celeba/celeba
+cd data/celeba/celeba
+gdown --id 0B7EVK8r0v71pZjFTYXZWM3FlRnM
+gdown --id 0B7EVK8r0v71pY0NSMzRuSXJEVkk
+gdown --id 0B7EVK8r0v71pTzJIdlJWdHczRlU
+gdown --id 0B7EVK8r0v71pd0FJY3Blby1HUTQ
+gdown --id 0B7EVK8r0v71pbThiMVRxWXZ4dU0
+gdown --id 0B7EVK8r0v71pblRyaVFSWGxPY0U
+gdown --id 1_ee_0u7vcNLOfNLegJRHmolfH5ICW-XS
+unzip img_align_celeba.zip
+```
+
+The resulting directory should have the following structure:
 
 ```
 data/
@@ -192,7 +208,7 @@ Code for reproducing the MayoCT experiment is in `exps/mayoct/`.
 bash exps/mayoct/train.sh
 ```
 
-- Model will be saved in `exps/mayoct/models`.
+- Model will be saved in `exps/mayoct/models/lpn/s=0.1`.
 
 - We also provide the [pretrained model](#pretrained-checkpoints).
 

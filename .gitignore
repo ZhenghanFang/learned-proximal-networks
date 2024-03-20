@@ -2,7 +2,7 @@ exps/**/models/
 exps/**/results/
 exps/**/experiments/
 pretrained/
-data/celeba/celeba/
+data/celeba/
 data/mayoct/
 
 # Byte-compiled / optimized / DLL files
