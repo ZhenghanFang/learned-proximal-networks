@@ -190,6 +190,7 @@ python exps/celeba/test.py --sigma_blur [BLUR LEVEL] --sigma_noise [NOISE LEVEL]
 ```
 
 - E.g., `python test.py --sigma_blur 1.0 --sigma_noise 0.02` will run deblurring using LPN for Gaussian kernel with standard deviation of $\sigma_{blur}=1.0$ and noise std of $\sigma_{noise}=0.02$.
+- `sigma_blur` can be 1.0 or 2.0. `sigma_noise` can be 0.02 or 0.04.
 - Results will be saved in `exps/celeba/results/inverse/deblur/blur=[BLUR LEVEL]_noise=[NOISE LEVEL]/admm/lpn/{x,y,xhat}`. `x` and `y` contain the clean images and blurred observation, respectively. `xhat` contains the deblurred images.
 
 <!-- 3. Visualize
