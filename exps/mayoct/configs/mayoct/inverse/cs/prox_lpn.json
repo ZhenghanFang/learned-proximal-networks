@@ -1,6 +1,6 @@
 {
     "prox": "lpn",
-    "model_path": "exps/mayoct/models/n=0.1/model.pt",
+    "model_path": "exps/mayoct/models/lpn/s=0.1/model.pt",
     "patch_size": 128,
     "stride_size": 64
 }

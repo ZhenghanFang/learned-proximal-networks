@@ -35,7 +35,7 @@ def parse_args():
     )
     args.model_config = OmegaConf.create(
         {
-            "model": "lpn_mayoct",
+            "model": "lpn_128",
             "params": {
                 "in_dim": 1,
                 "hidden": 256, 
@@ -47,7 +47,7 @@ def parse_args():
     args.prox_config = OmegaConf.create(
         {
             "prox": "lpn",
-            "model_path": "exps/mayoct/models/n=0.1/model.pt",
+            "model_path": "exps/mayoct/models/lpn/s=0.1/model.pt",
             "patch_size": 128,
             "stride_size": 64
         }
