@@ -199,9 +199,12 @@ def main(args):
     progress_bar.set_description(f"Train")
     while True:
         for step, batch in enumerate(train_dataloader):
-            if args.validate_every_n_steps > 0 and global_step % args.validate_every_n_steps == 0:
+            if (
+                args.validate_every_n_steps > 0
+                and global_step % args.validate_every_n_steps == 0
+            ):
                 validator.validate(model, global_step)
-                
+
             model.train()
             # get loss hyperparameters and learning rate
             loss_hparams, lr = get_loss_hparams_and_lr(args, global_step)
@@ -225,8 +228,6 @@ def main(args):
             }
             progress_bar.update(1)
             progress_bar.set_postfix(**logs)
-
-            
 
             if global_step % args.save_every_n_steps == 0:
                 fn = os.path.join(args.exp_dir, "model.pt")

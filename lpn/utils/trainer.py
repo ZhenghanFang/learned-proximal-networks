@@ -3,6 +3,7 @@ import numpy as np
 
 from lpn.utils import metrics
 
+
 class Validator:
     """Class for validation."""
 

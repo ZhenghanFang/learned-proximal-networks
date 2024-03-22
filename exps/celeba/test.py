@@ -49,6 +49,7 @@ args.data_dir = None
 def set_cmd(args):
     """Set the input parameters from commandline"""
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--sigma_blur", type=float, required=True)
     parser.add_argument("--sigma_noise", type=float, required=True)
@@ -58,6 +59,8 @@ def set_cmd(args):
     args.sigma_noise = args_cmd.sigma_noise
     args.out_dir = f"exps/celeba/results/inverse/deblur/blur={args_cmd.sigma_blur}_noise={args_cmd.sigma_noise}/admm"
     return args
+
+
 args = set_cmd(args)
 
 
@@ -79,6 +82,8 @@ def set_best(args):
     else:
         raise ValueError("Best parameters not defined for the given setting")
     return args
+
+
 args = set_best(args)
 
 

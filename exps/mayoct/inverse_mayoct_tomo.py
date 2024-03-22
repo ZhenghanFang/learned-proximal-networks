@@ -2,6 +2,7 @@ import argparse
 import os
 import numpy as np
 from scico import functional, linop, loss
+
 # from scico.optimize.admm import ADMM
 from tqdm import tqdm
 from skimage.metrics import peak_signal_noise_ratio as skimage_psnr
@@ -27,21 +28,16 @@ def parse_args():
     args.operator_config = OmegaConf.create(
         {
             "operator": "tomo",
-            "space_range": 128, 
-            "img_size": 512, 
-            "num_angles": 200, 
-            "det_shape": 400
+            "space_range": 128,
+            "img_size": 512,
+            "num_angles": 200,
+            "det_shape": 400,
         }
     )
     args.model_config = OmegaConf.create(
         {
             "model": "lpn_128",
-            "params": {
-                "in_dim": 1,
-                "hidden": 256, 
-                "beta": 100, 
-                "alpha": 1e-6
-            }
+            "params": {"in_dim": 1, "hidden": 256, "beta": 100, "alpha": 1e-6},
         }
     )
     args.prox_config = OmegaConf.create(
@@ -49,7 +45,7 @@ def parse_args():
             "prox": "lpn",
             "model_path": "exps/mayoct/models/lpn/s=0.1/model.pt",
             "patch_size": 128,
-            "stride_size": 64
+            "stride_size": 64,
         }
     )
     args.dataset_config = OmegaConf.create(
@@ -59,10 +55,12 @@ def parse_args():
             "split": "test",
             "squeeze": True,
             "start_idx": 0,
-            "num_imgs": 128
+            "num_imgs": 128,
         }
     )
-    args.out_dir = "exps/mayoct/results/inverse/mayoct/tomo/num_angles=200_det_shape=400_noise=2.0"
+    args.out_dir = (
+        "exps/mayoct/results/inverse/mayoct/tomo/num_angles=200_det_shape=400_noise=2.0"
+    )
     return args
 
 
@@ -89,7 +87,6 @@ def main_mayoct_tomo(args):
     noise_std_dev = 2.0
     y_list = measure(x_list, A, noise_std_dev, seed=0)
     fbp_list = [fbp_op_numpy(y) for y in y_list]
-
 
     # get LPN proximal step
     model = load_model(args.model_config, args.prox_config.model_path)
@@ -141,8 +138,8 @@ def main_mayoct_tomo(args):
         )
         xhat = solver.solve()
         xhat = np.clip(np.asarray(xhat), 0, 1)
-        psnr_val = skimage_psnr(x_list[i], xhat, data_range=1.)
-        ssim_val = skimage_ssim(x_list[i], xhat,  data_range=1.)
+        psnr_val = skimage_psnr(x_list[i], xhat, data_range=1.0)
+        ssim_val = skimage_ssim(x_list[i], xhat, data_range=1.0)
         print(
             f"PSNR: {psnr_val}",
             f"SSIM: {ssim_val}",
@@ -166,7 +163,9 @@ def main_mayoct_tomo(args):
         )
     )
     print(recon_log)
-    with open(os.path.join(args.out_dir, args.prox_config.prox, "xhat", "recon_log.txt"), "w") as f:
+    with open(
+        os.path.join(args.out_dir, args.prox_config.prox, "xhat", "recon_log.txt"), "w"
+    ) as f:
         f.write(recon_log)
 
 

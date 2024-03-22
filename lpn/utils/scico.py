@@ -12,13 +12,14 @@ from scico.optimize.admm import ADMM, LinearSubproblemSolver, SubproblemSolver
 from scico.util import device_info
 
 
-
 import scico.optimize.admm as soa
 from scico.solver import cg as scico_cg
 from scico.loss import SquaredL2Loss
 from scico.linop import LinearOperator
 from functools import reduce
 from scico.numpy.util import ensure_on_device, is_real_dtype
+
+
 ###### LinearSubproblemSolver without jit ######
 class LinearSubproblemSolver(SubproblemSolver):
     r"""Solver for quadratic functionals.
@@ -62,7 +63,7 @@ class LinearSubproblemSolver(SubproblemSolver):
             :math:`\mb{x}` update step.
     """
 
-    def __init__(self, cg_kwargs=None, cg_function= "scico"):
+    def __init__(self, cg_kwargs=None, cg_function="scico"):
         """Initialize a :class:`LinearSubproblemSolver` object.
 
         Args:
@@ -117,7 +118,8 @@ class LinearSubproblemSolver(SubproblemSolver):
         # Set lhs_op =  \sum_i rho_i * Ci.H @ Ci
         # Use reduce as the initialization of this sum is messy otherwise
         lhs_op = reduce(
-            lambda a, b: a + b, [rhoi * Ci.gram_op for rhoi, Ci in zip(admm.rho_list, admm.C_list)]
+            lambda a, b: a + b,
+            [rhoi * Ci.gram_op for rhoi, Ci in zip(admm.rho_list, admm.C_list)],
         )
         if admm.f is not None:
             # hessian = A.T @ W @ A; W may be identity
@@ -190,12 +192,9 @@ class ZeroOneIndicator(scico.functional.Functional):
             raise ValueError("Not defined for complex input.")
 
         # Equivalent to snp.inf if snp.any(x < 0) else 0.0
-        return snp.inf if snp.any(x<0) or snp.any(x>1) else 0.0
+        return snp.inf if snp.any(x < 0) or snp.any(x > 1) else 0.0
 
-
-    def prox(
-        self, v, lam: float = 1.0, **kwargs
-    ):
+    def prox(self, v, lam: float = 1.0, **kwargs):
         r"""The scaled proximal operator of the zero-one indicator.
 
         Evaluate the scaled proximal operator of the indicator over

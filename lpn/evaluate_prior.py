@@ -132,7 +132,6 @@ def main(args):
     np.save(f"{save_dir}/fy.npy", np.stack(fy_list, axis=1))
 
 
-
 if __name__ == "__main__":
     args = parse_args()
     main(args)
