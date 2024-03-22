@@ -11,6 +11,7 @@ from tqdm import tqdm
 from skimage.metrics import peak_signal_noise_ratio as skimage_psnr
 from skimage.metrics import structural_similarity as skimage_ssim
 from omegaconf import OmegaConf
+from PIL import Image
 
 
 from lpn.utils import get_model, get_imgs, load_config
@@ -69,12 +70,7 @@ def parse_args():
         args.model_config = OmegaConf.create(
             {
                 "model": "lpn_128",
-                "params": {
-                    "in_dim": 1,
-                    "hidden": 256,
-                    "beta": 100,
-                    "alpha": 1e-06
-                }
+                "params": {"in_dim": 1, "hidden": 256, "beta": 100, "alpha": 1e-06},
             }
         )
     if args.admm_config_path is not None:
@@ -207,8 +203,8 @@ def main_mayoct_cs(args):
         xhat = solver.solve()
         xhat = np.asarray(xhat)
         print(f"PSNR: {skimage_psnr(x_list[i], xhat, data_range=1.)}")
-        psnr_val = skimage_psnr(x_list[i], xhat, data_range=1.)
-        ssim_val = skimage_ssim(x_list[i], xhat,  data_range=1.)
+        psnr_val = skimage_psnr(x_list[i], xhat, data_range=1.0)
+        ssim_val = skimage_ssim(x_list[i], xhat, data_range=1.0)
         print(
             f"PSNR: {psnr_val}",
             f"SSIM: {ssim_val}",
@@ -231,13 +227,19 @@ def main_mayoct_cs(args):
         )
     )
     print(recon_log)
-    with open(os.path.join(args.out_dir, args.prox_config.prox, "xhat", "recon_log.txt"), "w") as f:
+    with open(
+        os.path.join(args.out_dir, args.prox_config.prox, "xhat", "recon_log.txt"), "w"
+    ) as f:
         f.write(recon_log)
 
 
 def _save(data, dir, i):
     os.makedirs(dir, exist_ok=True)
+    # save npy
     np.save(os.path.join(dir, f"{i}.npy"), data)
+    # save png
+    data = (data * 255).clip(0, 255).astype(np.uint8)
+    Image.fromarray(data).save(os.path.join(dir, f"{i}.png"))
 
 
 def get_x0(y, A, x0_type):
@@ -292,6 +294,7 @@ def main(args):
             raise NotImplementedError
     else:
         raise NotImplementedError
+
 
 if __name__ == "__main__":
     args = parse_args()

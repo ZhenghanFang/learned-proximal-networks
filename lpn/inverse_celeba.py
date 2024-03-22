@@ -11,6 +11,7 @@ from tqdm import tqdm
 from skimage.metrics import peak_signal_noise_ratio as skimage_psnr
 from skimage.metrics import structural_similarity as skimage_ssim
 from pprint import pp
+from PIL import Image
 
 
 from lpn.utils import get_model, get_imgs, load_config
@@ -242,7 +243,11 @@ def load_model(model_config, model_path):
 
 def _save(data, dir, i):
     os.makedirs(dir, exist_ok=True)
+    # save npy
     np.save(os.path.join(dir, f"{i}.npy"), data)
+    # save png
+    data = (data * 255).clip(0, 255).astype(np.uint8)
+    Image.fromarray(data).save(os.path.join(dir, f"{i}.png"))
 
 
 def get_x0(y, A, x0_type):
