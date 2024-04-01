@@ -254,10 +254,10 @@ All checkpoints are provided in this [Google drive](https://drive.google.com/dri
 If you find the code useful, please consider citing
 ```bib
 @inproceedings{
-    fang2023whats,
+    fang2024whats,
     title={What's in a Prior? Learned Proximal Networks for Inverse Problems},
     author={Zhenghan Fang and Sam Buchanan and Jeremias Sulam},
-    booktitle={International Conference on Learning Representations},
+    booktitle={The Twelfth International Conference on Learning Representations},
     year={2024}
 }
 ```
