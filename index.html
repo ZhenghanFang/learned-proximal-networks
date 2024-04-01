@@ -3,31 +3,31 @@
   <head>
     <!-- Google tag (gtag.js) -->
     <meta charset="utf-8" />
-    <title>Canonical Factors for Hybrid Neural Fields</title>
+    <title>What's in a Prior? Learned Proximal Networks for Inverse Problems</title>
 
     <meta content="" name="description" />
     <meta
-      content="Canonical Factors for Hybrid Neural Fields"
+      content="What's in a Prior? Learned Proximal Networks for Inverse Problems"
       property="og:title"
     />
     <meta
-      content="Factored feature volumes have an axis-alignment bias. This can be addressed via a learned set of transforms!"
+      content="Learned proximal networks (LPN) are a new class of deep neural networks that exactly parameterize proximal operators of characterizable priors for inverse problems."
       property="og:description"
     />
     <meta
-      content="https://brentyi.github.io/tilted/assets/method_preview.png"
+      content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
       property="og:image"
     />
     <meta
-      content="Canonical Factors for Hybrid Neural Fields"
+      content="What's in a Prior? Learned Proximal Networks for Inverse Problems"
       property="twitter:title"
     />
     <meta
-      content="Factored feature volumes have an axis-alignment bias. This can be addressed via a learned set of transforms!"
+      content="Learned proximal networks (LPN) are a new class of deep neural networks that exactly parameterize proximal operators of characterizable priors for inverse problems."
       property="twitter:description"
     />
     <meta
-      content="https://brentyi.github.io/tilted/assets/method_preview.png"
+      content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
       property="twitter:image"
     />
     <meta property="og:type" content="website" />
@@ -125,10 +125,10 @@
 
   <body>
     <h1 style="font-family: Lato; margin: 0.25em 0">
-      Canonical Factors for Hybrid Neural Fields
+      What's in a Prior? Learned Proximal Networks for Inverse Problems
     </h1>
 
-    <div style="text-align: center; font-weight: 600">@ ICCV 2023</div>
+    <div style="text-align: center; font-weight: 600">@ ICLR 2024</div>
     <div style="height: 1em"></div>
 
     <!-- Authors -->
@@ -145,19 +145,15 @@
         color: #666;
       "
     >
-      <!-- We group authors based on how we want them to wrap. Sam and Yi are
-        grouped together, etc. -->
+      <!-- We group authors based on how we want them to wrap. -->
       <div>
-        <a target="_blank">Brent Yi<sup>1</sup></a>
+        <a target="_blank">Zhenghan Fang<sup>1</sup></a>
         <div style="width: 1.25em; display: inline-block"></div>
-        <a target="_blank">Weijia Zeng<sup>1</sup></a>
-      </div>
-      <div>
         <a href="https://sdbuchanan.com/" target="_blank">Sam Buchanan</a
         ><sup>2</sup>
         <div style="width: 1.25em; display: inline-block"></div>
-        <a href="https://people.eecs.berkeley.edu/~yima/" target="_blank"
-          >Yi Ma</a
+        <a href="https://sites.google.com/view/jsulam" target="_blank"
+          >Jeremias Sulam</a
         ><sup>1</sup>
       </div>
     </div>
@@ -174,7 +170,7 @@
         font-weight: 400;
       "
     >
-      <div><sup>1</sup>UC Berkeley</div>
+      <div><sup>1</sup>JHU</div>
       <div><sup>2</sup>TTIC</div>
     </div>
     <div style="height: 1em"></div>
@@ -188,13 +184,13 @@
         flex-wrap: wrap;
       "
     >
-      <a href="https://github.com/brentyi/tilted" target="_blank">
+      <a href="https://github.com/ZhenghanFang/learned-proximal-networks" target="_blank">
         <button>
           <i class="ti ti-brand-github"></i>
           GitHub
         </button>
       </a>
-      <a href="https://arxiv.org/abs/2308.15461" target="_blank">
+      <a href="https://arxiv.org/abs/2310.14344" target="_blank">
         <button>
           <i class="ti ti-article"></i>
           arXiv
@@ -238,14 +234,11 @@
             border-radius: 0.5em;
           "
         >
-          @inproceedings{tilted2023,<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;author = {Yi, Brent and Zeng, Weijia and
-          Buchanan, Sam and Ma, Yi},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;title = {Canonical Factors for Hybrid Neural
-          Fields},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;booktitle = {International Conference on
-          Computer Vision (ICCV)},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;year = {2023},<br />
+          @inproceedings{fang2024whats,<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;title = {What's in a Prior? Learned Proximal Networks for Inverse Problems},<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;author = {Zhenghan Fang and Sam Buchanan and Jeremias Sulam},<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;booktitle = {The Twelfth International Conference on Learning Representations},<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;year = {2024},<br />
           }
         </code>
       </p>
@@ -255,19 +248,22 @@
     <p style="text-align: center">
       <strong>TLDR</strong>
       <em>
-        Factored feature volumes have an axis-alignment bias.<br />
-        This can be addressed via a learned set of transforms!
+        Learned proximal networks (LPN) are a new class of deep neural networks that exactly<br />
+        parameterize proximal operators of characterizable priors for inverse problems.
       </em>
     </p>
     <div style="height: 1em"></div>
 
     <!-- Big figure -->
-    <img src="./assets/TILTED_method.svg" id="tilted-method" />
+    <div style="text-align: center;">
+    <img src="./assets/blur=1.0_noise=0.02.png" style="width: 50%" id="celeba-deblur" />
+    </div>
+    <!-- <img src="./assets/TILTED_method.svg" id="tilted-method" />
     <img src="./assets/TILTED_method_narrow.svg" id="tilted-method-narrow" />
     <img
       src="./assets/TILTED_method_very_narrow.svg"
       id="tilted-method-very-narrow"
-    />
+    /> -->
     <div style="height: 1em"></div>
 
     <section>
