@@ -4,6 +4,7 @@ exps/**/experiments/
 pretrained/
 data/celeba/
 data/mayoct/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
