@@ -11,7 +11,7 @@
       property="og:title"
     />
     <meta
-      content="Learned proximal networks (LPN) are a new class of deep neural networks that exactly parameterize proximal operators of characterizable priors for inverse problems."
+      content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
       property="og:description"
     />
     <meta
@@ -23,7 +23,7 @@
       property="twitter:title"
     />
     <meta
-      content="Learned proximal networks (LPN) are a new class of deep neural networks that exactly parameterize proximal operators of characterizable priors for inverse problems."
+      content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
       property="twitter:description"
     />
     <meta
@@ -264,346 +264,163 @@
     <p style="text-align: center">
       <strong>TLDR</strong>
       <em>
-        Learned proximal networks (LPN) are a new class of deep neural networks that exactly<br />
-        parameterize proximal operators of characterizable priors for inverse problems.
+        Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators,  <br />accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors <br /> for inverse problems and convergent Plug-and-Play.
       </em>
     </p>
     <div style="height: 1em"></div>
 
     <!-- Big figure -->
-    <div style="text-align: center;">
-    <img src="./assets/blur=1.0_noise=0.02.png" style="width: 50%" id="celeba-deblur" />
-    </div>
-    <!-- <img src="./assets/TILTED_method.svg" id="tilted-method" />
-    <img src="./assets/TILTED_method_narrow.svg" id="tilted-method-narrow" />
-    <img
-      src="./assets/TILTED_method_very_narrow.svg"
-      id="tilted-method-very-narrow"
-    /> -->
-    <div style="height: 1em"></div>
+    <section>
+      <div style="text-align: center;">
+        <div
+            style="
+              display: block;
+            "
+          >
+          <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%" id="celeba-deblur" />
+        </div>
+      </div>
+      <!-- <img src="./assets/TILTED_method.svg" id="tilted-method" />
+      <img src="./assets/TILTED_method_narrow.svg" id="tilted-method-narrow" />
+      <img
+        src="./assets/TILTED_method_very_narrow.svg"
+        id="tilted-method-very-narrow"
+      /> -->
+      <div style="height: 1em"></div>
+    </section>
 
     <section>
       <h2>Overview</h2>
       <p>
-        We study state-of-the-art neural field architectures that rely on
-        factored feature volumes, by (1) analyzing factored grids in 2D to
-        characterize undesirable biases for axis-aligned signals, and (2) using
-        the resulting insights to propose <em>TILTED</em>, a family of hybrid
-        neural field architectures that removes these biases.
+        We propose <em>learned proximal networks</em> (LPN), a class of neural networks that exactly implement proximal operators
+        of general learned functions, and a new training loss, dubbed <em>proximal matching</em>, that provably promotes
+        learning of the proximal of an unknown prior. LPN achieves state-of-the-art performance for inverse problems, 
+        while enabling precise characterization of the learned prior, as well as convergence guarantees for the Plug-and-Play algorithm.
       </p>
     </section>
 
     <section>
-      <h2>Qualitative Results</h2>
+      <h2>Experiments</h2>
+      <h4>Learning the proximal for a Laplacian distribution</h4>
       <p>
-        We explore how recovering <em>canonical factors</em> via a learned set
-        of transformations can improve factorization-based representations with
-        only a handful of extra parameters.
+        LPN with proximal matching learns the correct proximal operator for a Laplacian distribution, while either $\ell_2$ or $\ell_1$ loss fails.
       </p>
-      <p>For signed distance fields, this reduces floating artifacts:</p>
-
-      <div
-        class="image-compare"
-        data-before-label="Vector-Matrix"
-        data-after-label="Vector-Matrix + TILTED"
-      >
-        <img src="./assets/sdf_tilted.png" />
-        <img src="./assets/sdf_aligned.png" />
+      <div style="text-align: center">
+        <div
+          style="
+            display: block;
+            padding: 0em;
+            border-radius: 0em;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
+        >
+          <img src="./assets/lpn/laplacian_compact.png" style="width: 100%"/>
+        </div>
       </div>
-      <div style="height: 1em"></div>
 
-      <p>For radiance fields, it improves visual fidelity:</p>
-      <div class="switcher">
+      <h4>Learning a prior for MNIST images</h4>
+      <p>
+        LPN-learned prior faithfully captures the distribution of natural hand-written digit images. 
+      </p>
+      <p>
+        The learned prior, $R_\theta$, evaluated at images corrupted by additive Gaussian noise with standard deviation $\sigma$:
+      </p>
+      <div style="text-align: center">
         <div
-          data-switcher-label="Kitchen"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_kitchen_rgb.jpg" />
-          <img src="./assets/aligned_kitchen_rgb.jpg" />
-        </div>
-        <div
-          data-switcher-label="Giannini Hall"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_giannini_rgb.jpg" />
-          <img src="./assets/aligned_giannini_rgb.jpg" />
-        </div>
-        <div
-          data-switcher-label="Stump"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_stump_rgb.jpg" />
-          <img src="./assets/aligned_stump_rgb.jpg" />
-        </div>
-        <div
-          data-switcher-label="Storefront"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_storefront_rgb.jpg" />
-          <img src="./assets/aligned_storefront_rgb.jpg" />
+          <img src="./assets/lpn/mnist_gaussian_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_gaussian.png" style="width: 59%"/>
         </div>
       </div>
 
       <p>
-        From the norms of interpolated features, we observe that canonicalized
-        factors interpretably align themself to scene geometry:
-      </p>
-
-      <div class="switcher">
+        The learned prior, $R_\theta$, evaluated at the convex combination of two MNIST images $(1-\lambda)\mathbf{x} + \lambda \mathbf{x}'$, showing that the prior faithfully captures the nonconvex nature of data distribution:
+      <div style="text-align: center">
         <div
-          data-switcher-label="Kitchen"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_kitchen_norm.jpg" />
-          <img src="./assets/aligned_kitchen_norm.jpg" />
-        </div>
-        <div
-          data-switcher-label="Giannini Hall"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_giannini_norm.jpg" />
-          <img src="./assets/aligned_giannini_norm.jpg" />
-        </div>
-        <div
-          data-switcher-label="Stump"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_stump_norm.jpg" />
-          <img src="./assets/aligned_stump_norm.jpg" />
-        </div>
-        <div
-          data-switcher-label="Storefront"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
-        >
-          <img src="./assets/tilted_storefront_norm.jpg" />
-          <img src="./assets/aligned_storefront_norm.jpg" />
+        <img src="./assets/lpn/mnist_convex_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_convex.png" style="width: 59%"/>
         </div>
       </div>
 
       <p>
-        From mapping latent feature vectors to RGB via a principal component
-        analysis, we observe a more expressive and interpretable feature volume:
+        The learned prior, $R_\theta$, evaluated at images blurred by Gaussian kernel with standard deviation $\sigma$:
+      <div style="text-align: center">
+        <div
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
+        >
+        <img src="./assets/lpn/mnist_blur_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_blur.png" style="width: 59%"/>
+        </div>
+      </div>
+
+      <h4>Results of LPN for real-world inverse problems</h4>
       </p>
-      <div class="switcher">
+      <p>
+        Deblurring for Gaussian blur kernel with standard deviation $\sigma=1.0$ and noise level $\sigma=0.02$:
+      </p>
+      <div style="text-align: center">
         <div
-          data-switcher-label="Kitchen"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_kitchen_pca.jpg" />
-          <img src="./assets/aligned_kitchen_pca.jpg" />
+          <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%"/>
         </div>
+      </div>
+      <p>
+        Deblurring with $\sigma=1.0$ and noise level $\sigma=0.04$:
+      </p>
+      <div style="text-align: center">
         <div
-          data-switcher-label="Giannini Hall"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_giannini_pca.jpg" />
-          <img src="./assets/aligned_giannini_pca.jpg" />
+          <img src="./assets/lpn/blur=1.0_noise=0.04.png" style="width: 100%"/>
         </div>
+      </div>
+      <p>
+        Sparse-view tomography (undersampling rate $\approx$ 30%):
+      </p>
+      <div style="text-align: center">
         <div
-          data-switcher-label="Stump"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_stump_pca.jpg" />
-          <img src="./assets/aligned_stump_pca.jpg" />
+          <img src="./assets/lpn/tomo.png" style="width: 100%"/>
         </div>
+      </div>
+
+      <p>
+        Compressed sensing (compression rate = 1/16):
+      </p>
+      <div style="text-align: center">
         <div
-          data-switcher-label="Storefront"
-          class="image-compare"
-          data-before-label="K-Planes"
-          data-after-label="K-Planes + TILTED"
+          style="
+            display: block;
+            box-shadow: 0 0 1em 0 #dbdbdb;
+          "
         >
-          <img src="./assets/tilted_storefront_pca.jpg" />
-          <img src="./assets/aligned_storefront_pca.jpg" />
+          <img src="./assets/lpn/cs_measurements_16384.png" style="width: 100%"/>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Motivation</h2>
-      <p>
-        Factored feature volumes offer advantages in compactness, efficiency,
-        and interpretability, but biases are introduced by an implicit frame of
-        representation.
-      </p>
 
-      <p>
-        The drawbacks of this are already apparent in 2D. A 2D factored grid is
-        simply a low-rank matrix decomposition, whose compactness can be
-        undermined by a simple rotation!
-      </p>
-
-      <div style="height: 1em"></div>
-      <div class="square-container">
-        <div>
-          <!-- CSS square -->
-          <div
-            style="
-              border: 1px solid black;
-              display: inline-block;
-              width: 10em;
-              height: 10em;
-              min-width: 10em;
-              position: relative;
-            "
-          >
-            <div
-              style="
-                background-color: #000;
-                width: 5em;
-                height: 5em;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
-              "
-            ></div>
-          </div>
-          <!-- prettier-ignore -->
-          $
-          \ \ \approx
-          \newcommand{\w}{\color{lightgray}0}
-          \newcommand{\b}{1}
-          \Large
-
-          \hspace{0.05em}
-          \begin{bmatrix}
-            \w & \w & \w & \w & \w \\
-            \w & \b & \b & \b & \w \\
-            \w & \b & \b & \b & \w \\
-            \w & \b & \b & \b & \w \\
-            \w & \w & \w & \w & \w \\
-          \end{bmatrix}
-          \hspace{0.05em}
-
-          \normalsize
-          \approx
-
-          \footnotesize
-
-          \begin{bmatrix}
-            \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-            \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-            \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-            \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-            \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-            \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-            \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-            \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-            \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-          \end{bmatrix}
-          $
-        </div>
-        <div style="color: #38761d">
-          ✔ <em>rank 1 can capture infinite detail</em>
-        </div>
-      </div>
-      <div style="height: 1em"></div>
-      <div class="square-container">
-        <div>
-          <!-- CSS diamond -->
-          <div
-            style="
-              border: 1px solid black;
-              display: inline-block;
-              width: 10em;
-              height: 10em;
-              min-width: 10em;
-              position: relative;
-            "
-          >
-            <div
-              style="
-                background-color: #000;
-                width: 5em;
-                height: 5em;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%) rotate(45deg);
-              "
-            ></div>
-          </div>
-          <!-- prettier-ignore -->
-          $
-            \ \ \approx
-            \newcommand{\w}{\color{lightgray}0}
-            \newcommand{\b}{1}
-
-            \begin{bmatrix}
-              \w & \w & \w & \w & \w & \w & \w \\
-              \w & \w & \w & \b & \w & \w & \w \\
-              \w & \w & \b & \b & \b & \w & \w \\
-              \w & \b & \b & \b & \b & \b & \w \\
-              \w & \w & \b & \b & \b & \w & \w \\
-              \w & \w & \w & \b & \w & \w & \w \\
-              \w & \w & \w & \w & \w & \w & \w \\
-            \end{bmatrix}
-
-            \normalsize
-            \approx
-
-            \footnotesize
-            \begin{bmatrix}
-              \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-              \w & \w & \w & \w & \b & \w & \w & \w & \w \\
-              \w & \w & \w & \b & \b & \b & \w & \w & \w \\
-              \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-              \w & \b & \b & \b & \b & \b & \b & \b & \w \\
-              \w & \w & \b & \b & \b & \b & \b & \w & \w \\
-              \w & \w & \w & \b & \b & \b & \w & \w & \w \\
-              \w & \w & \w & \w & \b & \w & \w & \w & \w \\
-              \w & \w & \w & \w & \w & \w & \w & \w & \w \\
-            \end{bmatrix}
-        $
-        </div>
-        <div style="color: #990000">
-          ✘
-          <em>
-            rank grows with desired detail, despite equivalent information
-          </em>
-        </div>
-      </div>
-
-      <!--
-      <p>
-        On the other hand, as soon as the square is rotated (say, by 45
-        degrees), its rank becomes proportional to the number of pixels in the
-        image <code>&#8212;</code> it cannot be represented compactly without
-        sacrificing quality.
-      </p>
-      -->
-      <div style="height: 1em"></div>
-
-      <p>
-        TILTED overcomes this limitation of low-rank grids by jointly optimizing
-        for <em>canonical factors</em> of the scene appearance and domain
-        transformations that capture viewpoint and pose.
-      </p>
-    </section>
-
-    <section>
+    <!-- <section>
       <h2>Theoretical Grounding</h2>
 
       <p>
@@ -677,15 +494,14 @@
         <em>implicit regularization in matrix factorization problems</em>
         towards low-rank solutions.
       </p>
-    </section>
+    </section> -->
 
     <h2>Acknowledgements</h2>
     <section>
       <p>
-        This material is based upon work supported by the National Science
-        Foundation Graduate Research Fellowship Program under Grant DGE 2146752,
-        the ONR grant N00014-22-1-2102, and the joint Simons Foundation-NSF DMS
-        grant 2031899.
+        This material is based upon work supported by NIH Grant P41EB031771, the Toffler Charitable
+        Trust, and the Distinguished Graduate Student Fellows program of the Kavli Neuroscience
+        Discovery Institute.
       </p>
     </section>
   </body>
