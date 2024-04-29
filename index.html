@@ -245,18 +245,28 @@
       We propose <em>learned proximal networks</em> (LPN), a class of neural networks that exactly implement proximal
       operators
       of general learned functions, and a new training loss, dubbed <em>proximal matching</em>, that provably promotes
-      learning of the proximal of an unknown prior. LPN achieves state-of-the-art performance for inverse problems,
+      learning of the proximal of an unknown prior.
+    </p>
+
+    <p>
+      LPN achieves state-of-the-art performance for inverse problems,
       while enabling precise characterization of the learned prior, as well as convergence guarantees for the
       Plug-and-Play algorithm.
     </p>
+
   </section>
 
   <section>
-    <h2>Experiments</h2>
+    <h2>Experimental Results</h2>
     <h4>Learning the proximal for a Laplacian distribution</h4>
     <p>
-      LPN with proximal matching learns the correct proximal operator for a Laplacian distribution, while either
-      $\ell_2$ or $\ell_1$ loss fails.
+      We study the prior learned via training with the proximal matching loss versus other common denoising losses,
+      such as $\ell_2$ or $\ell_1$ loss.
+    </p>
+    <p>
+      In a toy setting where <em>we know the true prior</em>, we see that
+      LPN with proximal matching <b>learns the correct proximal operator</b>, while other losses
+      do not!
     </p>
     <div style="text-align: center">
       <div style="
@@ -271,7 +281,7 @@
 
     <h4>Learning a prior for MNIST images</h4>
     <p>
-      LPN-learned prior faithfully captures the distribution of natural hand-written digit images.
+      The implicitly-learned LPN prior faithfully captures the distribution of natural hand-written digit images.
     </p>
     <p>
       The learned prior, $R_\theta$, evaluated at images corrupted by additive Gaussian noise with standard deviation
@@ -289,7 +299,8 @@
 
     <p>
       The learned prior, $R_\theta$, evaluated at the convex combination of two MNIST images $(1-\lambda)\mathbf{x} +
-      \lambda \mathbf{x}'$, showing that the prior faithfully captures the nonconvex nature of data distribution:
+      \lambda \mathbf{x}'$, showing that the prior faithfully captures the <b>nonconvex nature of natural image data
+        distributions</b>:
     <div style="text-align: center">
       <div style="
             display: block;
@@ -315,7 +326,7 @@
     <h4>Results of LPN for real-world inverse problems</h4>
     </p>
     <p>
-      Deblurring for Gaussian blur kernel with standard deviation $\sigma=1.0$ and noise level $\sigma=0.02$:
+      CelebA deblurring for Gaussian blur kernel with standard deviation 1.0 and noise level 0.02:
     </p>
     <div style="text-align: center">
       <div style="
@@ -326,7 +337,7 @@
       </div>
     </div>
     <p>
-      Deblurring with $\sigma=1.0$ and noise level $\sigma=0.04$:
+      Deblurring with blur kernel standard deviation 1.0 and noise level 0.04:
     </p>
     <div style="text-align: center">
       <div style="
@@ -359,6 +370,99 @@
         <img src="./assets/lpn/cs_measurements_16384.png" style="width: 100%" />
       </div>
     </div>
+    <p>
+      Additional experimental results and all experimental details are available in the paper.
+    </p>
+  </section>
+
+
+  <section>
+    <h2>How Does It Work?</h2>
+
+    <h4>Exact parameterization of proximal operators</h4>
+
+    <p>
+      We make use of a mathematical characterization of proximal operators due to Gribonval and Nikolova,
+      which states that a map $f$ (with sufficient regularity) is a proximal operator if and only if it is the gradient
+      of a convex function (with corresponding regularity). The following diagram illustrates these relationships for
+      the $\ell_1$ regularizer.
+    </p>
+
+    <div style="text-align: center">
+      <div style="
+            display: block;
+            /* box-shadow: 0 0 1em 0 #dbdbdb; */
+          ">
+        <img src="./assets/gribonval-nikolova.svg" style="width: 200px; max-width: 50%;" />
+      </div>
+    </div>
+
+    <p>
+      This extends Moreau's classical characterization of proximal operators of <em>convex functions</em>, giving us a
+      basis
+      for learning proximal operators for general, nonconvex regularizers! LPN applies the input-convex neural network
+      architecture of Amos, Xu, and Kolter to obtain an <b>exact parameterization</b> of (continuous) proximal
+      operators.
+    </p>
+
+    <h4>Learning expressive priors via proximal matching</h4>
+
+    <p>
+      Gribonval (2011) pointed out that MMSE denoising under the classical Gaussian noise model
+      $$ \boldsymbol{y} = \boldsymbol{x} + \boldsymbol{g}, $$
+      where $\boldsymbol{x}$ is distributed according to a prior $p_{\boldsymbol{x}}$ and $\boldsymbol{g}$ is
+      independent isotropic Gaussian noise, <em>does not correspond to penalized MAP estimation with the log-prior</em>
+      $-\log p_{\boldsymbol{x}}$. In other words, learning a deep denoiser via minimum $\ell_2$ denoising <em>does not
+        recover the correct log-prior for the underlying data distribution!</em>
+    </p>
+
+    <p>
+      To overcome this limitation, we propose the proximal matching loss for learning expressive priors.
+      For a denoiser $f_{\theta}$ with parameters $\theta$, it writes
+
+      $$\newcommand\x{\boldsymbol{x}}\newcommand\y{\boldsymbol{y}}\newcommand\E{\mathbb{E}}
+      \mathcal{L}_{PM}(\theta;\gamma) = \underset{\x,\y}{\E} \left[ m_\gamma(\|f_\theta(\y)- \x\|_2) \right], \quad
+      m_{\gamma}(x) =
+      1 - \frac{1}{(\pi\gamma^2)^{n/2}}\exp\left(-\frac{x^2}{\gamma^2}\right), \gamma > 0.
+      $$
+
+      In contrast to MMSE denoising, <em>we prove</em> that in the limit of small scale parameter $\gamma$,
+      training by minimizing the proximal matching loss <b>recovers the correct log-prior</b>!
+    </p>
+
+
+    <h4>Provably-convergent plug-and-play with LPN</h4>
+
+    <p>
+      Suppose we have linear measurements $\boldsymbol{y} = \boldsymbol{A} \boldsymbol{x}$ of a high-dimensional vector
+      that we wish to reconstruct.
+      With a prior $p_{\boldsymbol{x}}$ for $\boldsymbol{x}$ that we can evaluate, we can do this by solving the
+      regularized reconstruction problem
+      $$
+      \min_{\boldsymbol{x}} \frac{1}{2}\left\| \boldsymbol{y} - \boldsymbol{A} \boldsymbol{x} \right\|_2^2 - \lambda
+      \log p_{\boldsymbol{x}}(\boldsymbol{x})
+      $$
+      with solvers from numerical optimization (e.g., proximal gradient descent or ADMM). Such solvers involve the
+      proximal operator $\mathrm{prox}_{-\lambda \log p_{\boldsymbol{x}}}$ for the log-prior.
+    </p>
+
+    <p>
+      If we want to avoid modeling the distribution $p_{\boldsymbol{x}}$ by hand, we can replace all instances of this
+      proximal operator with a pretrained deep denoiser $f_{\theta}$. This corresponds to a <em>plug-and-play (PnP)
+        reconstruction algorithm</em> for the underlying inverse problem.
+      This motivates a natural question: <em>when can we guarantee that a PnP scheme converges?</em>
+    </p>
+
+    <p>
+      <em>A priori</em>, replacing a proximal operator with a general deep denoiser takes the PnP iteration
+      outside of the purview of convergence analyess from numerical optimization.
+      <b>However</b>, because LPN exactly parameterize
+      proximal operators, we obtain convergence guarantees for PnP schemes with LPNs for free under essentially
+      no assumptions. We provide proofs of such convergence guarantees in our paper, for PnP-PGD and PnP-ADMM.
+    </p>
+
+
+
   </section>
 
 
