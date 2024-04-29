@@ -9,13 +9,13 @@
   <meta content="" name="description" />
   <meta content="What's in a Prior? Learned Proximal Networks for Inverse Problems" property="og:title" />
   <meta
-    content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
+    content="Learned proximal networks (LPN) are deep neural networks that exactly parameterize proximal operators. When trained with our proposed proximal matching loss, they learn expressive and interpretable priors for real-world data distributions and enable convergent plug-and-play reconstruction in general inverse problems!"
     property="og:description" />
   <meta content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
     property="og:image" />
   <meta content="What's in a Prior? Learned Proximal Networks for Inverse Problems" property="twitter:title" />
   <meta
-    content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
+    content="Learned proximal networks (LPN) are deep neural networks that exactly parameterize proximal operators. When trained with our proposed proximal matching loss, they learn expressive and interpretable priors for real-world data distributions and enable convergent plug-and-play reconstruction in general inverse problems!"
     property="twitter:description" />
   <meta content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
     property="twitter:image" />
@@ -410,7 +410,8 @@
     <p>
       Gribonval (2011) pointed out that MMSE denoising under the classical Gaussian noise model
       $$ \boldsymbol{y} = \boldsymbol{x} + \boldsymbol{g}, $$
-      where $\boldsymbol{x} \in \mathbb{R}^n$ is distributed according to a prior distribution $p$ and $\boldsymbol{g}$ is
+      where $\boldsymbol{x} \in \mathbb{R}^n$ is distributed according to a prior distribution $p$ and $\boldsymbol{g}$
+      is
       independent isotropic Gaussian noise, <em>does not correspond to penalized MAP estimation with the log-prior</em>
       $-\log p$. In other words, learning a deep denoiser via minimum $\ell_2$ denoising <em>does not
         recover the correct log-prior for the underlying data distribution!</em>
@@ -436,7 +437,8 @@
     <h3>Provably-convergent plug-and-play with LPN</h3>
 
     <p>
-    Suppose we have linear measurements $\boldsymbol{y} = \boldsymbol{A} \boldsymbol{x}_{\natural}$ of a high-dimensional vector
+      Suppose we have linear measurements $\boldsymbol{y} = \boldsymbol{A} \boldsymbol{x}_{\natural}$ of a
+      high-dimensional vector
       that we wish to reconstruct.
       With a prior $p$ for $\boldsymbol{x}_{\natural}$ that we can evaluate, we can do this by solving the
       regularized reconstruction problem
