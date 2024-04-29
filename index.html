@@ -410,24 +410,26 @@
     <p>
       Gribonval (2011) pointed out that MMSE denoising under the classical Gaussian noise model
       $$ \boldsymbol{y} = \boldsymbol{x} + \boldsymbol{g}, $$
-      where $\boldsymbol{x}$ is distributed according to a prior $p_{\boldsymbol{x}}$ and $\boldsymbol{g}$ is
+      where $\boldsymbol{x} \in \mathbb{R}^n$ is distributed according to a prior $p_{\boldsymbol{x}}$ and $\boldsymbol{g}$ is
       independent isotropic Gaussian noise, <em>does not correspond to penalized MAP estimation with the log-prior</em>
       $-\log p_{\boldsymbol{x}}$. In other words, learning a deep denoiser via minimum $\ell_2$ denoising <em>does not
         recover the correct log-prior for the underlying data distribution!</em>
     </p>
 
     <p>
-      To overcome this limitation, we propose the proximal matching loss for learning expressive priors.
-      For a denoiser $f_{\theta}$ with parameters $\theta$, it writes
+      To overcome this limitation, we propose the proximal matching loss for learning expressive priors. It writes
 
       $$\newcommand\x{\boldsymbol{x}}\newcommand\y{\boldsymbol{y}}\newcommand\E{\mathbb{E}}
-      \mathcal{L}_{PM}(\theta;\gamma) = \underset{\x,\y}{\E} \left[ m_\gamma(\|f_\theta(\y)- \x\|_2) \right], \quad
-      m_{\gamma}(x) =
-      1 - \frac{1}{(\pi\gamma^2)^{n/2}}\exp\left(-\frac{x^2}{\gamma^2}\right), \gamma > 0.
+      \mathcal L_{\gamma}(\x,\y) =
+      1 - \frac{1}{(\pi\gamma^2)^{n/2}}\exp\left(-\frac{\|\x-\y\|_2^2}{\gamma^2}\right), \quad\gamma > 0.
       $$
+      <!-- \mathcal{L}_{PM}(\theta;\gamma) = \underset{\x,\y}{\E} \left[ m_\gamma(\|f_\theta(\y)- \x\|_2) \right], \quad -->
+      <!-- m_{\gamma}(x) = -->
+      <!-- 1 - \frac{1}{(\pi\gamma^2)^{n/2}}\exp\left(-\frac{x^2}{\gamma^2}\right), \gamma > 0. -->
+      <!-- For a denoiser $f_{\theta}$ with parameters $\theta$, it writes -->
 
       In contrast to MMSE denoising, <em>we prove</em> that in the limit of small scale parameter $\gamma$,
-      training by minimizing the proximal matching loss <b>recovers the correct log-prior</b>!
+      training a denoiser by minimizing the proximal matching loss <b>recovers the correct log-prior</b>!
     </p>
 
 
