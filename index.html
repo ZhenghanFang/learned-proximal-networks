@@ -1,139 +1,98 @@
 <!doctype html>
 <html>
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <meta charset="utf-8" />
-    <title>What's in a Prior? Learned Proximal Networks for Inverse Problems</title>
 
-    <meta content="" name="description" />
-    <meta
-      content="What's in a Prior? Learned Proximal Networks for Inverse Problems"
-      property="og:title"
-    />
-    <meta
-      content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
-      property="og:description"
-    />
-    <meta
-      content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
-      property="og:image"
-    />
-    <meta
-      content="What's in a Prior? Learned Proximal Networks for Inverse Problems"
-      property="twitter:title"
-    />
-    <meta
-      content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
-      property="twitter:description"
-    />
-    <meta
-      content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
-      property="twitter:image"
-    />
-    <meta property="og:type" content="website" />
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1"
-    />
+<head>
+  <!-- Google tag (gtag.js) -->
+  <meta charset="utf-8" />
+  <title>What's in a Prior? Learned Proximal Networks for Inverse Problems</title>
 
-    <link href="assets/favicon.svg" rel="shortcut icon" type="image/x-icon" />
+  <meta content="" name="description" />
+  <meta content="What's in a Prior? Learned Proximal Networks for Inverse Problems" property="og:title" />
+  <meta
+    content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
+    property="og:description" />
+  <meta content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
+    property="og:image" />
+  <meta content="What's in a Prior? Learned Proximal Networks for Inverse Problems" property="twitter:title" />
+  <meta
+    content="Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators, accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors for inverse problems and convergent Plug-and-Play."
+    property="twitter:description" />
+  <meta content="https://zhenghanfang.github.io/learned-proximal-networks/assets/blur=1.0_noise=0.02.png"
+    property="twitter:image" />
+  <meta property="og:type" content="website" />
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link
-      href="https://fonts.gstatic.com"
-      rel="preconnect"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
-      type="text/javascript"
-    ></script>
-    <script type="text/javascript">
-      WebFont.load({
-        google: {
-          families: [
-            "Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic",
-          ],
-        },
-      });
-    </script>
-    <!--[if lt IE 9
+  <link href="assets/favicon.svg" rel="shortcut icon" type="image/x-icon" />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    WebFont.load({
+      google: {
+        families: [
+          "Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic",
+        ],
+      },
+    });
+  </script>
+  <!--[if lt IE 9
       ]><script
         src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
         type="text/javascript"
       ></script
     ><![endif]-->
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
-      integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE="
-      crossorigin="anonymous"
-    ></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
+    integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
 
-    <!-- Image compare utility. -->
-    <link href="./image-compare.css" rel="stylesheet" type="text/css" />
-    <script src="./image-compare.js" type="text/javascript"></script>
+  <!-- Image compare utility. -->
+  <link href="./image-compare.css" rel="stylesheet" type="text/css" />
+  <script src="./image-compare.js" type="text/javascript"></script>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"
-    />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
 
-    <!-- KaTeX -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
-      integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
-      crossorigin="anonymous"
-    />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
-      integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          // • rendering keys, e.g.:
-          throwOnError: false,
-        });
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+    integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+    integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+    crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        // customised options
+        // • auto-render specific keys, e.g.:
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true},
+        ],
+        // • rendering keys, e.g.:
+        throwOnError: false,
       });
-    </script>
-  </head>
+    });
+  </script>
+</head>
 
-  <body>
-    <h1 style="font-family: Lato; margin: 0.25em 0">
-      What's in a Prior? Learned Proximal Networks for Inverse Problems
-    </h1>
+<body>
+  <h1 style="font-family: Lato; margin: 0.25em 0">
+    What's in a Prior? Learned Proximal Networks for Inverse Problems
+  </h1>
 
-    <div style="text-align: center; font-weight: 600">@ ICLR 2024</div>
-    <div style="height: 1em"></div>
+  <div style="text-align: center; font-weight: 600">@ ICLR 2024</div>
+  <div style="height: 1em"></div>
 
-    <!-- Authors -->
-    <div
-      style="
+  <!-- Authors -->
+  <div style="
         display: flex;
         flex-wrap: wrap;
         text-align: center;
@@ -143,98 +102,87 @@
         margin: 0 auto;
         font-weight: 600;
         color: #666;
-      "
-    >
-      <!-- We group authors based on how we want them to wrap. -->
-      <div>
-        <a target="_blank">Zhenghan Fang<sup>1*</sup></a>
-        <div style="width: 1.25em; display: inline-block"></div>
-        <a href="https://sdbuchanan.com/" target="_blank">Sam Buchanan</a
-        ><sup>2*</sup>
-        <div style="width: 1.25em; display: inline-block"></div>
-        <a href="https://sites.google.com/view/jsulam" target="_blank"
-          >Jeremias Sulam</a
-        ><sup>1</sup>
-      </div>
+      ">
+    <!-- We group authors based on how we want them to wrap. -->
+    <div>
+      <a target="_blank">Zhenghan Fang<sup>1*</sup></a>
+      <div style="width: 1.25em; display: inline-block"></div>
+      <a href="https://sdbuchanan.com/" target="_blank">Sam Buchanan</a><sup>2*</sup>
+      <div style="width: 1.25em; display: inline-block"></div>
+      <a href="https://sites.google.com/view/jsulam" target="_blank">Jeremias Sulam</a><sup>1</sup>
     </div>
-    <div style="height: 1em"></div>
+  </div>
+  <div style="height: 1em"></div>
 
-    <!-- Affiliations -->
-    <div
-      style="
+  <!-- Affiliations -->
+  <div style="
         display: flex;
         justify-content: center;
         gap: 2em;
         max-width: 15em;
         margin: 0 auto;
         font-weight: 400;
-      "
-    >
-      <div><sup>1</sup>JHU</div>
-      <div><sup>2</sup>TTIC</div>
-    </div>
-    <div style="height: 1em"></div>
+      ">
+    <div><sup>1</sup>JHU</div>
+    <div><sup>2</sup>TTIC</div>
+  </div>
+  <div style="height: 1em"></div>
 
-    <!-- Footnote -->
-    <div
-      style="
+  <!-- Footnote -->
+  <div style="
         display: flex;
         justify-content: center;
         gap: 2em;
         max-width: 15em;
         margin: 0 auto;
         font-weight: 400;
-      "
-    >
-      <div>*Equal contribution</div>
-    </div>
-    <div style="height: 1em"></div>
+      ">
+    <div>*Equal contribution</div>
+  </div>
+  <div style="height: 1em"></div>
 
 
-    <!-- Links -->
-    <div
-      style="
+  <!-- Links -->
+  <div style="
         display: flex;
         justify-content: center;
         gap: 0.5em 1em;
         flex-wrap: wrap;
-      "
-    >
-      <a href="https://github.com/ZhenghanFang/learned-proximal-networks" target="_blank">
-        <button>
-          <i class="ti ti-brand-github"></i>
-          GitHub
-        </button>
-      </a>
-      <a href="https://arxiv.org/abs/2310.14344" target="_blank">
-        <button>
-          <i class="ti ti-article"></i>
-          arXiv
-        </button>
-      </a>
-      <script type="text/javascript">
-        function toggleBibtex() {
-          const $bibtex = $("#bibtex");
-          $bibtex.css(
-            "display",
-            $bibtex.css("display") === "none" ? "block" : "none",
-          );
-        }
-      </script>
-      <a onclick="toggleBibtex()">
-        <button>
-          <i class="ti ti-book-2"></i>
-          BibTeX
-        </button>
-      </a>
-    </div>
+      ">
+    <a href="https://github.com/ZhenghanFang/learned-proximal-networks" target="_blank">
+      <button>
+        <i class="ti ti-brand-github"></i>
+        GitHub
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2310.14344" target="_blank">
+      <button>
+        <i class="ti ti-article"></i>
+        arXiv
+      </button>
+    </a>
+    <script type="text/javascript">
+      function toggleBibtex() {
+        const $bibtex = $("#bibtex");
+        $bibtex.css(
+          "display",
+          $bibtex.css("display") === "none" ? "block" : "none",
+        );
+      }
+    </script>
+    <a onclick="toggleBibtex()">
+      <button>
+        <i class="ti ti-book-2"></i>
+        BibTeX
+      </button>
+    </a>
+  </div>
 
-    <section id="bibtex" style="display: none">
-      <div style="height: 1em"></div>
-      <div style="height: 1em"></div>
-      <p>
-        <code
-          style="
+  <section id="bibtex" style="display: none">
+    <div style="height: 1em"></div>
+    <div style="height: 1em"></div>
+    <p>
+      <code style="
             font-family:
               Courier New,
               Courier,
@@ -248,179 +196,173 @@
             padding: 1em;
             box-sizing: border-box;
             border-radius: 0.5em;
-          "
-        >
-          @inproceedings{fang2024whats,<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;title = {What's in a Prior? Learned Proximal Networks for Inverse Problems},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;author = {Zhenghan Fang and Sam Buchanan and Jeremias Sulam},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;booktitle = {The Twelfth International Conference on Learning Representations},<br />
-          &nbsp;&nbsp;&nbsp;&nbsp;year = {2024},<br />
-          }
-        </code>
-      </p>
-    </section>
-
-    <!-- tldr -->
-    <p style="text-align: center">
-      <strong>TLDR</strong>
-      <em>
-        Learned proximal networks (LPN) are deep neural networks that parameterize exact proximal operators,  <br />accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable priors <br /> for inverse problems and convergent Plug-and-Play.
-      </em>
+          ">
+        @inproceedings{fang2024whats,<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;title = {What's in a Prior? Learned Proximal Networks for Inverse Problems},<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;author = {Zhenghan Fang and Sam Buchanan and Jeremias Sulam},<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;booktitle = {The Twelfth International Conference on Learning Representations},<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;year = {2024},<br />
+        }
+      </code>
     </p>
-    <div style="height: 1em"></div>
+  </section>
 
-    <!-- Big figure -->
-    <section>
-      <div style="text-align: center;">
-        <div
-            style="
+  <!-- tldr -->
+  <p style="text-align: center">
+    <strong>TLDR:</strong>
+    <em>
+      Learned proximal networks (LPN) are deep neural networks that <b>exactly parameterize</b> proximal operators. <br>
+      When trained with our proposed proximal matching loss, they learn expressive and interpretable priors <br>
+      for real-world data distributions
+      and <b>enable convergent plug-and-play reconstruction</b> in general inverse problems!
+      <!-- <br />accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable -->
+      <!-- priors <br /> for inverse problems and convergent Plug-and-Play. -->
+    </em>
+  </p>
+  <div style="height: 1em"></div>
+
+  <!-- Big figure -->
+  <section>
+    <div style="text-align: center;">
+      <div style="
               display: block;
-            "
-          >
-          <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%" id="celeba-deblur" />
-        </div>
+            ">
+        <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%" id="celeba-deblur" />
       </div>
-      <!-- <img src="./assets/TILTED_method.svg" id="tilted-method" />
+    </div>
+    <!-- <img src="./assets/TILTED_method.svg" id="tilted-method" />
       <img src="./assets/TILTED_method_narrow.svg" id="tilted-method-narrow" />
       <img
         src="./assets/TILTED_method_very_narrow.svg"
         id="tilted-method-very-narrow"
       /> -->
-      <div style="height: 1em"></div>
-    </section>
+    <div style="height: 1em"></div>
+  </section>
 
-    <section>
-      <h2>Overview</h2>
-      <p>
-        We propose <em>learned proximal networks</em> (LPN), a class of neural networks that exactly implement proximal operators
-        of general learned functions, and a new training loss, dubbed <em>proximal matching</em>, that provably promotes
-        learning of the proximal of an unknown prior. LPN achieves state-of-the-art performance for inverse problems, 
-        while enabling precise characterization of the learned prior, as well as convergence guarantees for the Plug-and-Play algorithm.
-      </p>
-    </section>
+  <section>
+    <h2>Overview</h2>
+    <p>
+      We propose <em>learned proximal networks</em> (LPN), a class of neural networks that exactly implement proximal
+      operators
+      of general learned functions, and a new training loss, dubbed <em>proximal matching</em>, that provably promotes
+      learning of the proximal of an unknown prior. LPN achieves state-of-the-art performance for inverse problems,
+      while enabling precise characterization of the learned prior, as well as convergence guarantees for the
+      Plug-and-Play algorithm.
+    </p>
+  </section>
 
-    <section>
-      <h2>Experiments</h2>
-      <h4>Learning the proximal for a Laplacian distribution</h4>
-      <p>
-        LPN with proximal matching learns the correct proximal operator for a Laplacian distribution, while either $\ell_2$ or $\ell_1$ loss fails.
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+  <section>
+    <h2>Experiments</h2>
+    <h4>Learning the proximal for a Laplacian distribution</h4>
+    <p>
+      LPN with proximal matching learns the correct proximal operator for a Laplacian distribution, while either
+      $\ell_2$ or $\ell_1$ loss fails.
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             padding: 0em;
             border-radius: 0em;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/laplacian_compact.png" style="width: 100%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/laplacian_compact.png" style="width: 100%" />
       </div>
+    </div>
 
-      <h4>Learning a prior for MNIST images</h4>
-      <p>
-        LPN-learned prior faithfully captures the distribution of natural hand-written digit images. 
-      </p>
-      <p>
-        The learned prior, $R_\theta$, evaluated at images corrupted by additive Gaussian noise with standard deviation $\sigma$:
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+    <h4>Learning a prior for MNIST images</h4>
+    <p>
+      LPN-learned prior faithfully captures the distribution of natural hand-written digit images.
+    </p>
+    <p>
+      The learned prior, $R_\theta$, evaluated at images corrupted by additive Gaussian noise with standard deviation
+      $\sigma$:
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/mnist_gaussian_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_gaussian.png" style="width: 59%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/mnist_gaussian_violin.svg" style="width: 39%" /> <img
+          src="./assets/lpn/mnist_gaussian.png" style="width: 59%" />
       </div>
+    </div>
 
-      <p>
-        The learned prior, $R_\theta$, evaluated at the convex combination of two MNIST images $(1-\lambda)\mathbf{x} + \lambda \mathbf{x}'$, showing that the prior faithfully captures the nonconvex nature of data distribution:
-      <div style="text-align: center">
-        <div
-          style="
+    <p>
+      The learned prior, $R_\theta$, evaluated at the convex combination of two MNIST images $(1-\lambda)\mathbf{x} +
+      \lambda \mathbf{x}'$, showing that the prior faithfully captures the nonconvex nature of data distribution:
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-        <img src="./assets/lpn/mnist_convex_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_convex.png" style="width: 59%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/mnist_convex_violin.svg" style="width: 39%" /> <img src="./assets/lpn/mnist_convex.png"
+          style="width: 59%" />
       </div>
+    </div>
 
-      <p>
-        The learned prior, $R_\theta$, evaluated at images blurred by Gaussian kernel with standard deviation $\sigma$:
-      <div style="text-align: center">
-        <div
-          style="
+    <p>
+      The learned prior, $R_\theta$, evaluated at images blurred by Gaussian kernel with standard deviation $\sigma$:
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-        <img src="./assets/lpn/mnist_blur_violin.svg" style="width: 39%"/> <img src="./assets/lpn/mnist_blur.png" style="width: 59%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/mnist_blur_violin.svg" style="width: 39%" /> <img src="./assets/lpn/mnist_blur.png"
+          style="width: 59%" />
       </div>
+    </div>
 
-      <h4>Results of LPN for real-world inverse problems</h4>
-      </p>
-      <p>
-        Deblurring for Gaussian blur kernel with standard deviation $\sigma=1.0$ and noise level $\sigma=0.02$:
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+    <h4>Results of LPN for real-world inverse problems</h4>
+    </p>
+    <p>
+      Deblurring for Gaussian blur kernel with standard deviation $\sigma=1.0$ and noise level $\sigma=0.02$:
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/blur=1.0_noise=0.02.png" style="width: 100%" />
       </div>
-      <p>
-        Deblurring with $\sigma=1.0$ and noise level $\sigma=0.04$:
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+    </div>
+    <p>
+      Deblurring with $\sigma=1.0$ and noise level $\sigma=0.04$:
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/blur=1.0_noise=0.04.png" style="width: 100%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/blur=1.0_noise=0.04.png" style="width: 100%" />
       </div>
-      <p>
-        Sparse-view tomography (undersampling rate $\approx$ 30%):
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+    </div>
+    <p>
+      Sparse-view tomography (undersampling rate $\approx$ 30%):
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/tomo.png" style="width: 100%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/tomo.png" style="width: 100%" />
       </div>
+    </div>
 
-      <p>
-        Compressed sensing (compression rate = 1/16):
-      </p>
-      <div style="text-align: center">
-        <div
-          style="
+    <p>
+      Compressed sensing (compression rate = 1/16):
+    </p>
+    <div style="text-align: center">
+      <div style="
             display: block;
             box-shadow: 0 0 1em 0 #dbdbdb;
-          "
-        >
-          <img src="./assets/lpn/cs_measurements_16384.png" style="width: 100%"/>
-        </div>
+          ">
+        <img src="./assets/lpn/cs_measurements_16384.png" style="width: 100%" />
       </div>
-    </section>
+    </div>
+  </section>
 
 
-    <!-- <section>
+  <!-- <section>
       <h2>Theoretical Grounding</h2>
 
       <p>
@@ -496,13 +438,19 @@
       </p>
     </section> -->
 
-    <h2>Acknowledgements</h2>
-    <section>
-      <p>
-        This material is based upon work supported by NIH Grant P41EB031771, the Toffler Charitable
-        Trust, and the Distinguished Graduate Student Fellows program of the Kavli Neuroscience
-        Discovery Institute.
-      </p>
-    </section>
-  </body>
+  <h2>Acknowledgements</h2>
+  <section>
+    <p>
+      This material is based upon work supported by NIH Grant P41EB031771, the Toffler Charitable
+      Trust, and the Distinguished Graduate Student Fellows program of the Kavli Neuroscience
+      Discovery Institute.
+    </p>
+
+    <p>
+      This website template was adapted from Brent Yi's project page for <a
+        href="https://brentyi.github.io/tilted/">TILTED</a>.
+    </p>
+  </section>
+</body>
+
 </html>
