@@ -87,44 +87,50 @@
   </h1>
 
   <div style="text-align: center; font-weight: 600">@ ICLR 2024</div>
-  <div style="height: 1em"></div>
+  <div class="title-spacer"></div>
 
   <!-- Authors -->
-  <div style="
-        display: flex;
-        flex-wrap: wrap;
-        text-align: center;
-        justify-content: center;
-        gap: 0.4em 1.25em;
-        max-width: 30em;
-        margin: 0 auto;
-        font-weight: 600;
-        color: #666;
-      ">
+  <div id="authors-div" , style="
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            text-wrap: balance;
+            justify-content: center;
+            max-width: 40em;
+            margin: 0 auto;
+            font-weight: 600;
+            color: #666;
+            ">
     <!-- We group authors based on how we want them to wrap. -->
     <div>
       <a target="_blank">Zhenghan Fang<sup>1*</sup></a>
-      <div style="width: 1.25em; display: inline-block"></div>
+      <div class="name-spacer" , style="display: inline-block"></div>
       <a href="https://sdbuchanan.com/" target="_blank">Sam Buchanan</a><sup>2*</sup>
-      <div style="width: 1.25em; display: inline-block"></div>
+      <div class="name-spacer" , style="display: inline-block"></div>
       <a href="https://sites.google.com/view/jsulam" target="_blank">Jeremias Sulam</a><sup>1</sup>
     </div>
   </div>
-  <div style="height: 1em"></div>
+  <div class="title-spacer"></div>
 
   <!-- Affiliations -->
   <div style="
-        display: flex;
-        justify-content: center;
-        gap: 2em;
-        max-width: 15em;
-        margin: 0 auto;
-        font-weight: 400;
-      ">
-    <div><sup>1</sup>JHU</div>
-    <div><sup>2</sup>TTIC</div>
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2em;
+            max-width: 30em;
+            margin: 0 auto;
+            font-weight: 400;
+            text-wrap: balance;
+            text-align: center;
+            ">
+
+    <div id="affiliations-list">
+      <sup>1</sup>JHU&nbsp;&nbsp;
+      <sup>2</sup>TTIC&nbsp;&nbsp;
+    </div>
   </div>
-  <div style="height: 1em"></div>
+  <div class="title-spacer"></div>
 
   <!-- Footnote -->
   <div style="
@@ -135,18 +141,13 @@
         margin: 0 auto;
         font-weight: 400;
       ">
-    <div>*Equal contribution</div>
+    <div id="equal-contribution-div">*Equal contribution</div>
   </div>
-  <div style="height: 1em"></div>
+  <div class="title-spacer"></div>
 
 
   <!-- Links -->
-  <div style="
-        display: flex;
-        justify-content: center;
-        gap: 0.5em 1em;
-        flex-wrap: wrap;
-      ">
+  <div class="button_list">
     <a href="https://github.com/ZhenghanFang/learned-proximal-networks" target="_blank">
       <button>
         <i class="ti ti-brand-github"></i>
@@ -212,18 +213,21 @@
   </section>
 
   <!-- tldr -->
-  <p style="text-align: center">
-    <strong>TLDR:</strong>
-    <em>
-      Learned proximal networks (LPN) are deep neural networks that <b>exactly parameterize</b> proximal operators. <br>
-      When trained with our proposed proximal matching loss, they learn expressive and interpretable priors <br>
-      for real-world data distributions
-      and <b>enable convergent plug-and-play reconstruction</b> in general inverse problems!
-      <!-- <br />accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable -->
-      <!-- priors <br /> for inverse problems and convergent Plug-and-Play. -->
-    </em>
-  </p>
-  <div style="height: 1em"></div>
+  <div id="tldr-div">
+    <p style="text-align: center; max-width: 55em;">
+      <strong>TLDR:</strong>
+      <em>
+        Learned proximal networks (LPN) are deep neural networks that <b>exactly parameterize</b> proximal
+        operators.<br>
+        When trained with our proposed proximal matching loss, they learn expressive and interpretable priors
+        for real-world data distributions
+        and <b>enable convergent plug-and-play reconstruction</b> in general inverse problems!
+        <!-- <br />accompanied by proximal matching loss for learning the prox for an unkown prior. These enable interpretable -->
+        <!-- priors <br /> for inverse problems and convergent Plug-and-Play. -->
+      </em>
+    </p>
+  </div>
+  <div class="figure-spacer"></div>
 
   <!-- Big figure -->
   <section>
@@ -240,7 +244,7 @@
         src="./assets/TILTED_method_very_narrow.svg"
         id="tilted-method-very-narrow"
       /> -->
-    <div style="height: 1em"></div>
+    <div class="title-spacer"></div>
   </section>
 
   <section>

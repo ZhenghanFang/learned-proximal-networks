@@ -15,6 +15,7 @@ h1 {
   line-height: 1.5em;
   margin-bottom: 0.5em;
 }
+
 h2 {
   font-size: 1.3em;
   text-align: center;
@@ -38,9 +39,31 @@ p {
   margin-right: auto;
 }
 
+
+.title-spacer {
+  height: 1em;
+}
+
+.figure-spacer {
+  height: 1em;
+}
+
+.name-spacer {
+  width: 1.25em;
+}
+
+#authors-div {
+  gap: 0.4em 1.25em;
+}
+
+#equal-contributions-div {
+  gap: 0.4em 1.25em;
+}
+
 button {
   /* background-color: #4c50af; [> Green <] */
-  background-color: #fff; /* Green */
+  background-color: #fff;
+  /* Green */
   border-radius: 0.5em;
   border: 1px solid #333;
   padding: 0.5em 2em;
@@ -49,6 +72,19 @@ button {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+    padding: 0.5em 0.5em;
+  }
+
+}
+
+.button_list {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em 1em;
+  flex-wrap: wrap;
 }
 
 #tilted-method,
@@ -58,9 +94,11 @@ button {
   width: 70em;
   max-width: 100%;
 }
+
 #tilted-method-narrow {
   display: none;
 }
+
 #tilted-method-very-narrow {
   display: none;
 }
@@ -69,6 +107,7 @@ button {
   #tilted-method {
     display: none;
   }
+
   #tilted-method-narrow {
     display: block;
   }
@@ -78,8 +117,57 @@ button {
   #tilted-method-narrow {
     display: none;
   }
+
   #tilted-method-very-narrow {
     display: block;
+  }
+
+  /* mobile styles here */
+  p,
+  a,
+  li {
+    font-size: 0.8750em;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  #tldr-div {
+    p {
+      font-size: 0.75em;
+    }
+  }
+
+  #affiliations-list {
+    font-size: 0.8750em;
+  }
+
+  #authors-div {
+    gap: 0.1em 1.25em;
+  }
+
+  #equal-contribution-div {
+    font-size: 0.8750em;
+    gap: 0.1em 1.25em;
+  }
+
+  .title-spacer {
+    height: 0.25em;
+  }
+
+  .name-spacer {
+    width: 0.5em;
+  }
+
+  .figure-spacer {
+    height: 0.5em;
   }
 }
 
@@ -93,7 +181,7 @@ button {
 }
 
 @media screen and (max-width: 800px) {
-  .square-container > div:nth-child(1) {
+  .square-container>div:nth-child(1) {
     font-size: 0.75em;
   }
 }
@@ -102,32 +190,34 @@ button {
   .square-container {
     flex-wrap: wrap;
   }
-  .square-container > div:nth-child(1) {
+
+  .square-container>div:nth-child(1) {
     font-size: 0.65em;
   }
-  .square-container > div:nth-child(2) {
+
+  .square-container>div:nth-child(2) {
     width: 18em;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .square-container > div:nth-child(1) {
+  .square-container>div:nth-child(1) {
     font-size: 0.375em;
   }
 }
 
 /* Children are (matrices/LaTeX, text). */
-.square-container > div:nth-child(1) {
+.square-container>div:nth-child(1) {
   vertical-align: middle;
   text-align: center;
   text-wrap: nowrap;
 }
 
-.square-container > div:nth-child(1) > * {
+.square-container>div:nth-child(1)>* {
   vertical-align: middle;
 }
 
-.square-container > div:nth-child(2) {
+.square-container>div:nth-child(2) {
   text-align: left;
 }
 
@@ -137,6 +227,7 @@ button {
     font-size: 0.875em;
   }
 }
+
 @media screen and (max-width: 480px) {
   .katex-display {
     font-size: 0.75em;
