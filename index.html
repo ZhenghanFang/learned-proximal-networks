@@ -410,9 +410,9 @@
     <p>
       Gribonval (2011) pointed out that MMSE denoising under the classical Gaussian noise model
       $$ \boldsymbol{y} = \boldsymbol{x} + \boldsymbol{g}, $$
-      where $\boldsymbol{x} \in \mathbb{R}^n$ is distributed according to a prior $p_{\boldsymbol{x}}$ and $\boldsymbol{g}$ is
+      where $\boldsymbol{x} \in \mathbb{R}^n$ is distributed according to a prior distribution $p$ and $\boldsymbol{g}$ is
       independent isotropic Gaussian noise, <em>does not correspond to penalized MAP estimation with the log-prior</em>
-      $-\log p_{\boldsymbol{x}}$. In other words, learning a deep denoiser via minimum $\ell_2$ denoising <em>does not
+      $-\log p$. In other words, learning a deep denoiser via minimum $\ell_2$ denoising <em>does not
         recover the correct log-prior for the underlying data distribution!</em>
     </p>
 
@@ -436,20 +436,20 @@
     <h3>Provably-convergent plug-and-play with LPN</h3>
 
     <p>
-      Suppose we have linear measurements $\boldsymbol{y} = \boldsymbol{A} \boldsymbol{x}$ of a high-dimensional vector
+    Suppose we have linear measurements $\boldsymbol{y} = \boldsymbol{A} \boldsymbol{x}_{\natural}$ of a high-dimensional vector
       that we wish to reconstruct.
-      With a prior $p_{\boldsymbol{x}}$ for $\boldsymbol{x}$ that we can evaluate, we can do this by solving the
+      With a prior $p$ for $\boldsymbol{x}_{\natural}$ that we can evaluate, we can do this by solving the
       regularized reconstruction problem
       $$
       \min_{\boldsymbol{x}} \frac{1}{2}\left\| \boldsymbol{y} - \boldsymbol{A} \boldsymbol{x} \right\|_2^2 - \lambda
-      \log p_{\boldsymbol{x}}(\boldsymbol{x})
+      \log p(\boldsymbol{x})
       $$
       with solvers from numerical optimization (e.g., proximal gradient descent or ADMM). Such solvers involve the
-      proximal operator $\mathrm{prox}_{-\lambda \log p_{\boldsymbol{x}}}$ for the log-prior.
+      proximal operator $\mathrm{prox}_{-\lambda \log p}$ for the log-prior.
     </p>
 
     <p>
-      If we want to avoid modeling the distribution $p_{\boldsymbol{x}}$ by hand, we can replace all instances of this
+      If we want to avoid modeling the distribution $p$ by hand, we can replace all instances of this
       proximal operator with a pretrained deep denoiser $f_{\theta}$. This corresponds to a <em>plug-and-play (PnP)
         reconstruction algorithm</em> for the underlying inverse problem.
       This motivates a natural question: <em>when can we guarantee that a PnP scheme converges?</em>
