@@ -11,6 +11,12 @@ by [Zhenghan Fang](), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sul
 
 We propose *learned proximal networks* (LPN), a new class of deep neural networks that *exactly implement the proximal operator* of a general learned function. Such an LPN implicitly learns a regularization function for inverse problems that can be characterized and evaluated, shedding light onto what has been learned from data and improving the interpretability of learning-based solutions. In turn, we present a new training problem, dubbed *proximal matching*, that provably promotes the recovery of the correct regularization term (i.e., the log of the data distribution). Moreover, we show convergence for PnP reconstruction algorithms using LPN with minimal and verifiable assumptions.
 
+**Method overview:**
+
+<img src="assets/method_overview_2.png" width="85%">
+
+</br>
+
 - Laplacian example: the proximal operator $f_\theta$ and log-prior $R_\theta$ learned by LPN for the Laplacian distribution, trained via the $\ell_2$, $\ell_1$, or proximal matching ($\mathcal{L}_{PM}$) loss.
 
 <img src="assets/laplacian_compact.png" width="85%">
