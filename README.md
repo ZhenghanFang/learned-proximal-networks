@@ -4,18 +4,17 @@
 
 This is the official implementation of the paper [What's in a Prior? Learned Proximal Networks for Inverse Problems](https://openreview.net/pdf?id=kNPcOaqC5r) @ [ICLR 2024](https://iclr.cc/Conferences/2024)
 
-by [Zhenghan Fang](), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sulam](https://sites.google.com/view/jsulam)
+by [Zhenghan Fang](https://zhenghanfang.github.io/), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sulam](https://sites.google.com/view/jsulam)
 
+[[`Paper`](https://openreview.net/pdf?id=kNPcOaqC5r)] [[`Project`](https://zhenghanfang.github.io/learned-proximal-networks/)] [[`Talk`](https://iclr.cc/virtual/2024/poster/17978)] [[`Slides`](https://slides.com/zhenghanfang/iclr2024/fullscreen)] [[`BibTeX`](#references)]
 
 --------------------
 
-We propose *learned proximal networks* (LPN), a new class of deep neural networks that *exactly implement the proximal operator* of a general learned function. Such an LPN implicitly learns a regularization function for inverse problems that can be characterized and evaluated, shedding light onto what has been learned from data and improving the interpretability of learning-based solutions. In turn, we present a new training problem, dubbed *proximal matching*, that provably promotes the recovery of the correct regularization term (i.e., the log of the data distribution). Moreover, we show convergence for PnP reconstruction algorithms using LPN with minimal and verifiable assumptions.
-
-**Method overview:**
-
 <img src="assets/method_overview_2.png" width="85%">
 
-</br>
+We propose *learned proximal networks* (LPN), a new class of deep neural networks that *exactly implement the proximal operator* of a general learned function. Such an LPN implicitly learns a regularization function for inverse problems that can be characterized and evaluated, shedding light onto what has been learned from data and improving the interpretability of learning-based solutions. In turn, we present a new training problem, dubbed *proximal matching*, that provably promotes the recovery of the correct regularization term (i.e., the log of the data distribution). Moreover, we show convergence for PnP reconstruction algorithms using LPN with minimal and verifiable assumptions.
+
+
 
 - Laplacian example: the proximal operator $f_\theta$ and log-prior $R_\theta$ learned by LPN for the Laplacian distribution, trained via the $\ell_2$, $\ell_1$, or proximal matching ($\mathcal{L}_{PM}$) loss.
 
