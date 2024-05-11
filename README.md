@@ -6,7 +6,7 @@ This is the official implementation of the paper [What's in a Prior? Learned Pro
 
 by [Zhenghan Fang](https://zhenghanfang.github.io/), [Sam Buchanan](https://sdbuchanan.com/), and [Jeremias Sulam](https://sites.google.com/view/jsulam)
 
-[[`Paper`](https://openreview.net/pdf?id=kNPcOaqC5r)] [[`Project`](https://zhenghanfang.github.io/learned-proximal-networks/)] [[`Talk`](https://iclr.cc/virtual/2024/poster/17978)] [[`Slides`](https://slides.com/zhenghanfang/iclr2024/fullscreen)] [[`BibTeX`](#references)]
+[[`Paper`](https://openreview.net/pdf?id=kNPcOaqC5r)] [[`Project`](https://zhenghanfang.github.io/learned-proximal-networks/)] [[`Talk`](https://iclr.cc/virtual/2024/poster/17978)] [[`Slides`](https://slides.com/zhenghanfang/iclr2024/fullscreen)] [[`Poster`](https://iclr.cc/media/PosterPDFs/ICLR%202024/17978.png?t=1714588084.3620567)] [[`BibTeX`](#references)]
 
 --------------------
 
