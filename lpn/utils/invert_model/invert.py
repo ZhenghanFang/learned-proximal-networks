@@ -3,7 +3,7 @@ from .invert_cvx_gd import invert_cvx_gd
 from .invert_ls import invert_ls
 
 
-def invert(x, model, inv_alg):
+def invert(x, model, inv_alg, **kwargs):
     """Invert the LPN model at x.
     Inputs:
         x: (n, *), numpy.ndarray, n points
@@ -15,7 +15,7 @@ def invert(x, model, inv_alg):
     Note: The shape of x should match the input shape of the model.
     """
     if inv_alg == "ls":
-        return invert_ls(x, model)
+        return invert_ls(x, model, **kwargs)
     elif inv_alg == "cvx_cg":
         return invert_cvx_cg(x, model)
     elif inv_alg == "cvx_gd":

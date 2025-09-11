@@ -3,7 +3,7 @@ import torch
 
 
 def invert_cvx_gd(x, model):
-    """Invert the learned proximal operator at x by convex optimization with conjugate gradient.
+    """Invert the learned proximal operator at x by convex optimization with gradient descent.
     Inputs:
         x: (n, *), a vector of n points, numpy array
         model: LPN model.
